@@ -1,16 +1,17 @@
-#include <stdio.h>
 #include <stdlib.h>
 
-struct rectangle {
-	double widht;
-	double height;
-};
+void use_buffer(char* memory){
+	memory[0] = 'a';
+}
+
+void leak_memory()
+{
+	char* memory = (char*)malloc(4096);
+	use_buffer(memory);
+	/* whoops! forgot to call free() */
+}
 
 int main(){
-	rectangle* rect = (rectangle*)malloc(10*sizeof(rectangle));
-	rect[0].widht = 10;
-	rect[0].height = 20;
-	printf("%.2f %.2f\n", rect->height, rect->widht);
-	delete [] rect;
+	leak_memory();
 	return 0;
 }

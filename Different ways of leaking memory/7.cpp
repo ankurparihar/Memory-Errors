@@ -1,30 +1,30 @@
-#include <string>
+#include <iostream>
+#include <vector>
 
-class MyClass
-{
-public:
-	virtual void doSomething() {}
+struct rectangel {
+	int height;
+	int width;
+	rectangel(int h, int w) {
+		height = h;
+		width = w;
+	}
 };
 
-class MyClass2 : public MyClass
-{
-private:
-	std::string str;
-public:
-	MyClass2(std::string& s)
-	{
-		str = s;
-	}
-	virtual void doSomething() {}
-};
-
-int main()
-{
-	std::string hello("hello");
-	MyClass *p = new MyClass2(hello);
-	if(p)
-	{
-		delete p;
-	}
+int main(){
+	std::vector <rectangel*> int_vec;
+	int_vec.push_back(new rectangel(5, 10));
+	int_vec.push_back(new rectangel(5, 10));
+	int_vec.push_back(new rectangel(5, 10));
+	int_vec.push_back(new rectangel(5, 10));
+	int_vec.push_back(new rectangel(5, 10));
+	std::cout << int_vec[0]->height << " " << int_vec[0]->width << std::endl;
+	std::cout << int_vec.size() << std::endl;
+	delete int_vec[0];
+	std::cout << int_vec[0]->height << " " << int_vec[0]->width << std::endl;
+	std::cout << int_vec.size() << std::endl;
+	int_vec.pop_back();
+	std::cout << int_vec[0]->height << " " << int_vec[0]->width << " ";
+	std::cout << int_vec[1]->height << " " << int_vec[1]->width << std::endl;
+	std::cout << int_vec.size() << std::endl;
 	return 0;
 }

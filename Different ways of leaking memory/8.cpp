@@ -1,19 +1,30 @@
-struct A
+#include <string>
+
+class MyClass
 {
-	A* aptr;
+public:
+	virtual void doSomething() {}
 };
 
-void doSomething(void* p)
+class MyClass2 : public MyClass
 {
+private:
+	std::string str;
+public:
+	MyClass2(std::string& s)
+	{
+		str = s;
+	}
+	virtual void doSomething() {}
+};
+
+int main()
+{
+	std::string hello("hello");
+	MyClass *p = new MyClass2(hello);
 	if(p)
 	{
 		delete p;
 	}
-}
-
-int main()
-{
-	A* p = new A();
-	doSomething(p);
 	return 0;
 }
