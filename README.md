@@ -1,7 +1,24 @@
 # Memory-Errors
-Bad memory management examples and their testing using various tools
+Bad memory management examples and their testing using various tools<br>
 
-### Sources
+## Usage
+
+### Compiling
+
+Include debug information while compiling<br>
+
+- `g++ -g file.cpp`<br>
+- `gcc -g file.cpp`<br>
+
+_Note_: if needed use static linking `-static`<br>
+
+### Valgrind
+
+- `valgrind --leak-check=full ./program args`<br>
+
+_Optional_: `--track-origins=yes`, `--show-leak-kinds=all`<br>
+
+## Sources
 - https://www.linuxjournal.com/article/6556
 - [ASAN](https://github.com/google/sanitizers/wiki/AddressSanitizer)
 - [Different ways of leaking memory - Stackoverflow](https://stackoverflow.com/questions/6561266/different-ways-of-leaking-memory)
